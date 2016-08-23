@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D10作业 留言板</title>
+	<style type="text/css">
+	*{margin:50px auto 0;padding: 0; list-style-type: none; outline: none;}
+	div{
+		width: 500px;
+		border: 10px double green;
+		padding: 30px;
+		background-color: rgb(161,208,111);
+		opacity: 0.6;
+		text-align: center;
+	}
+	#name{
+		width: 368px;
+		height: 50px;
+		font-size: 30px;
+		border-radius: 5px;
+		border:3px solid rgb(101,90,150);
+		background-color: rgb(160,149,192);
+	}
+	span{
+		font-size: 30px;
+		font-weight:bold;
+	}
+	#txt{
+		font-size: 25px;
+		vertical-align: -920%;
+		border-radius: 7px;
+		border:3px solid rgb(101,90,150);
+		background-color: rgb(222,124,155);
+		resize:none;
+	}
+	#btn{
+		width: 70px;
+		height: 30px;
+		background-color: green;
+		border-radius: 10px;
+		font-weight: bold;
+		font-size: 22px;
+	}
+	ul{
+		border: 5px dotted pink;
+		text-align: left;
+		border-radius: 5px;
+		background-color: rgb(222,124,155);
+	}
+	ul li{
+		line-height: 20px;
+		text-align: left;
+		color: green;
+
+
+	}
+	</style>
+</head>
+<body>
+
+	<div>
+		<h1>留言板</h1>
+		<hr>
+		<span>
+			姓  名:
+		</span>
+		<input type="text" value="" id="name" maxlength="4">
+		<br>
+		<!-- <span>内容：</span><input type="text" id="txt"> -->
+		<span>
+			内  容:
+		</span>
+		<textarea name="留言内容" id="txt" cols="30"rows="10" autofocus="autofocus" maxlength="200" required="required"   wrap="hard" resize="none">
+
+		</textarea>
+		<br>
+		<input type="button" value="提交" id="btn">
+		<hr>
+		<h2>
+			显示留言
+		</h2>
+		<ul id="list">
+
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+	function txtAdd(){
+		var list = document.getElementById('list');
+		var btn = document.getElementById('btn');
+		function bind(){
+			var oName = document.getElementById('name');
+				var oTxt = document.getElementById('txt');
+				btn.onclick = function(){
+				var date = new Date();
+				var m =	oName.value;
+				var n = oTxt.value;
+				var p = document.createElement('p');
+				var li = document.createElement('li');
+				li.innerHTML ="姓名:"+m+"<br>"+"留言内容:<br>"+n+"<br>"+date+"<br><a href='###'>删除此留言</a><br><hr>";
+				  // p = oName;
+				  // li = oTxt;
+				  // if (m==null||n==nul) {
+				  // 	alert('输入有误！')
+				  // }
+				list.appendChild(li);
+
+				var anchor = li.getElementsByTagName('a');
+				anchor[0].onclick = function(){
+					list.removeChild (li);
+				}
+			}
+		}
+		bind();
+	}
+	txtAdd();
+	</script>
+</body>
+</html>
